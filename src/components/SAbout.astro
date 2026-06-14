@@ -19,6 +19,36 @@ const awards = {
     CSSDA2015: 'CSSDA Best Front-End <br/>Developer 2015',
   },
 }
+
+const studies = [
+  {
+    title: 'Informatics Engineering at Institut Teknologi Bandung',
+    institution: 'Institut Teknologi Bandung',
+    date: '2025 - Now',
+    description: 'Focusing on software development and computer science fundamentals.',
+  },
+  {
+    title: 'SMA Negeri 3',
+    institution: 'Tangerang Selatan, Indonesia',
+    date: '2021 - 2024',
+    description: 'Focusing on Mathematics, Physics, and Chemistry.',
+  },
+]
+
+const organizations = [
+  {
+    role: 'Core Member',
+    entity: 'Awwwards Jury',
+    date: '2022 — Present',
+    description: 'Reviewing and scoring some of the best digital experiences worldwide.',
+  },
+  {
+    role: 'Lead Developer',
+    entity: 'Creative Tech Collective',
+    date: '2021 — 2023',
+    description: 'Leading a team of 4 to build experimental open-source web components.',
+  },
+]
 ---
 
 <section id="about" class="s-about" data-intersect>
@@ -27,6 +57,16 @@ const awards = {
       <h2 class="s__title">About</h2>
 
       <div class="s__content">
+        <div class="s__me">
+          <div class="s__me__image">
+            <img src="/images/pp.jpeg" alt="Muhammad Rafiandhi Suryadinata" />
+            <div class="s__me__glitch" style="background-image: url('/images/pp.jpeg');"></div>
+            <div class="s__me__glitch" style="background-image: url('/images/pp.jpeg');"></div>
+          </div>
+          <h3 class="s__me__name">Muhammad Rafiandhi Suryadinata</h3>
+          <p class="s__me__title">Informatics Engineering</p>
+        </div>
+
         <p>
          Curiosity and the drive to learn are the most valuable skills for any creative developer. That hunger to understand how things work, to find clever workarounds, and to constantly push boundaries—that’s what makes this craft so rewarding.
         </p>
@@ -48,6 +88,42 @@ const awards = {
         </p>
       </div><!-- .s__content -->
     </div><!-- .s__block -->
+
+    <div class="s__block s__block--studies">
+      <h2 class="s__title">Studies</h2>
+
+      <div class="s__content s__content--list">
+        {
+          studies.map((study) => (
+            <div class="s__item">
+              <h3 class="s__item__title">{study.title}</h3>
+              <p class="s__item__meta">
+                {study.institution} — {study.date}
+              </p>
+              <p class="s__item__description">{study.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="s__block s__block--organizations">
+      <h2 class="s__title">Organizations</h2>
+
+      <div class="s__content s__content--list">
+        {
+          organizations.map((org) => (
+            <div class="s__item">
+              <h3 class="s__item__title">{org.role}</h3>
+              <p class="s__item__meta">
+                {org.entity} — {org.date}
+              </p>
+              <p class="s__item__description">{org.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
 
     <div class="s__block s__block--awards">
       <h2 class="s__title">Awards</h2>
@@ -827,6 +903,85 @@ const awards = {
         padding: 15vw 10vw;
       }
 
+      .s__me {
+        width: 15rem;
+        margin: 0 auto 4.5rem;
+
+        @include mq(phone) {
+          width: 12rem;
+          margin-bottom: 3rem;
+        }
+
+        &__image {
+          position: relative;
+          display: block;
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          overflow: hidden;
+          border: 1px solid #16b199;
+
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1);
+            transition: filter 0.3s ease;
+          }
+
+          &:hover {
+            img {
+              filter: grayscale(0);
+            }
+
+            .s__me__glitch {
+              opacity: 1;
+            }
+          }
+        }
+
+        &__name {
+          margin: 1.5rem 0 0.25rem;
+          font: 700 1.25rem / 1.2 font-family(fraktion);
+          text-align: center;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        &__title {
+          margin: 0;
+          font: 400 0.875rem / 1.4 font-family(fraktion);
+          text-align: center;
+          opacity: 0.8;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        &__glitch {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          opacity: 0;
+          pointer-events: none;
+
+          &:nth-child(2) {
+            background-color: rgba(255, 0, 0, 0.3);
+            background-blend-mode: screen;
+            animation: glitch-1 0.3s infinite linear;
+          }
+
+          &:nth-child(3) {
+            background-color: rgba(0, 255, 255, 0.3);
+            background-blend-mode: screen;
+            animation: glitch-2 0.3s infinite linear;
+          }
+        }
+      }
+
       a {
         position: relative;
         display: inline-block;
@@ -1291,6 +1446,100 @@ const awards = {
       .s__canvas {
         display: none;
       }
+    }
+  }
+
+  @keyframes glitch-1 {
+    0% {
+      clip-path: inset(10% 0 80% 0);
+      transform: translate(-5px, 0);
+    }
+    10% {
+      clip-path: inset(40% 0 40% 0);
+      transform: translate(5px, 0);
+    }
+    20% {
+      clip-path: inset(70% 0 10% 0);
+      transform: translate(-5px, 0);
+    }
+    30% {
+      clip-path: inset(20% 0 60% 0);
+      transform: translate(5px, 0);
+    }
+    40% {
+      clip-path: inset(50% 0 30% 0);
+      transform: translate(-5px, 0);
+    }
+    50% {
+      clip-path: inset(80% 0 5% 0);
+      transform: translate(5px, 0);
+    }
+    60% {
+      clip-path: inset(30% 0 50% 0);
+      transform: translate(-5px, 0);
+    }
+    70% {
+      clip-path: inset(60% 0 20% 0);
+      transform: translate(5px, 0);
+    }
+    80% {
+      clip-path: inset(15% 0 75% 0);
+      transform: translate(-5px, 0);
+    }
+    90% {
+      clip-path: inset(45% 0 35% 0);
+      transform: translate(5px, 0);
+    }
+    100% {
+      clip-path: inset(10% 0 80% 0);
+      transform: translate(-5px, 0);
+    }
+  }
+
+  @keyframes glitch-2 {
+    0% {
+      clip-path: inset(80% 0 10% 0);
+      transform: translate(5px, 0);
+    }
+    10% {
+      clip-path: inset(10% 0 70% 0);
+      transform: translate(-5px, 0);
+    }
+    20% {
+      clip-path: inset(50% 0 30% 0);
+      transform: translate(5px, 0);
+    }
+    30% {
+      clip-path: inset(30% 0 50% 0);
+      transform: translate(-5px, 0);
+    }
+    40% {
+      clip-path: inset(60% 0 20% 0);
+      transform: translate(5px, 0);
+    }
+    50% {
+      clip-path: inset(15% 0 75% 0);
+      transform: translate(-5px, 0);
+    }
+    60% {
+      clip-path: inset(45% 0 35% 0);
+      transform: translate(5px, 0);
+    }
+    70% {
+      clip-path: inset(10% 0 80% 0);
+      transform: translate(-5px, 0);
+    }
+    80% {
+      clip-path: inset(40% 0 40% 0);
+      transform: translate(5px, 0);
+    }
+    90% {
+      clip-path: inset(70% 0 10% 0);
+      transform: translate(-5px, 0);
+    }
+    100% {
+      clip-path: inset(80% 0 10% 0);
+      transform: translate(5px, 0);
     }
   }
 </style>

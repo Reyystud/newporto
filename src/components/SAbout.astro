@@ -5,50 +5,21 @@
 // Stay sharp, stay honest, and keep having fun.
 const awards = {
   counters: {
-    awwwards: ['SOTD x 16', 'Honors x 1'],
-    fwa: ['SOTD x 4', 'MOTD x 2'],
-    cssda: ['WOTD x 18', 'WOTM x 1'],
+    fullstack: ['Developer'],
+    tedxitb: ['Event', 'Organizer'],
+    bloca: ['Backend', 'DevSecOps'],
   },
   texts: {
-    webby2025: '2025 Webby Awards Winner <br/>Best Home Page',
-    commArt2017: 'Comm Arts Mag Interactive  Annual Competition Winner 2017',
-    netMag2016: 'Net Mag SOTM Summer 2016',
-    gsapOct2024: 'GSAP SOTM October 2024',
-    gsapNov2024: 'GSAP SOTM November 2024',
-    CSSDA2016: 'CSSDA Best Front-End <br/>Developer 2016',
-    CSSDA2015: 'CSSDA Best Front-End <br/>Developer 2015',
+    webby2025: 'My Activities at Institut Teknologi Bandung <br/>Informatics Engineering',
+    commArt2017: 'Head of Information Technology Department at IMPACT ITB 6.0',
+    netMag2016: 'Project Officer of STEI-Kamp',
+    gsapOct2024: 'Robotic Software Control at Aksantara ITB',
+    gsapNov2024: 'Technology Development Team at Aksantara ITB',
+    CSSDA2016: 'Growth Hacker at <br/>aimasukptn.com',
+    CSSDA2015: 'Mathematics Peer Tutor for Pretest by STEI-K ITB',
   },
 }
 
-const studies = [
-  {
-    title: 'Informatics Engineering at Institut Teknologi Bandung',
-    institution: 'Institut Teknologi Bandung',
-    date: '2025 - Now',
-    description: 'Focusing on software development and computer science fundamentals.',
-  },
-  {
-    title: 'SMA Negeri 3',
-    institution: 'Tangerang Selatan, Indonesia',
-    date: '2021 - 2024',
-    description: 'Focusing on Mathematics, Physics, and Chemistry.',
-  },
-]
-
-const organizations = [
-  {
-    role: 'Core Member',
-    entity: 'Awwwards Jury',
-    date: '2022 — Present',
-    description: 'Reviewing and scoring some of the best digital experiences worldwide.',
-  },
-  {
-    role: 'Lead Developer',
-    entity: 'Creative Tech Collective',
-    date: '2021 — 2023',
-    description: 'Leading a team of 4 to build experimental open-source web components.',
-  },
-]
 ---
 
 <section id="about" class="s-about" data-intersect>
@@ -68,68 +39,15 @@ const organizations = [
         </div>
 
         <p>
-         Curiosity and the drive to learn are the most valuable skills for any creative developer. That hunger to understand how things work, to find clever workarounds, and to constantly push boundaries—that’s what makes this craft so rewarding.
+          I am an Informatics student at Institut Teknologi Bandung with a deep passion for full-stack development and system infrastructure optimization. Throughout my academic and professional journey, I have focused on building solutions that are not only functional but also high-performing with a premium-minimalist aesthetic. My technical expertise spans modern web development using stacks such as Next.js, Svelte, and Go, complemented by database management with tools like Supabase and Prisma to ensure project scalability.
         </p>
 
         <p>
-          Over the years, I’ve learned more from studying other people’s code than from any course or tutorial. Digging through Codrops experiments, exploring CodePen creations, and analyzing real-world projects—that’s how I leveled up. And it’s still part of my daily routine.
+          Beyond the classroom, I actively contribute to the Aksantara UAV research team, where I have developed a web-based Ground Control Station for drone telemetry management using the MAVLink protocol. I also served as the Head of the Website Division for the IMPACT 6.0 competition, a role that honed my ability to integrate complex systems like Moodle and Judge0. Beyond software development, I am highly enthusiastic about system ricing and declarative infrastructure management using NixOS and Arch Linux, which allows me to create efficient and reproducible development environments. With a blend of exploration in cybersecurity through CTF challenges and leadership experience in large-scale events like TEDxITB 9.0, I am continuously challenging myself to build impactful and innovative projects.
         </p>
 
-        <p>
-          This portfolio brought me more recognition than I ever expected. What started as a quiet relaunch of my digital presence ended up winning a Webby Award. Now it’s time to give back.
-        </p>
-
-        <p>
-          I’m open-sourcing this site to share the knowledge behind it. If you’re a junior developer, I hope it helps you learn faster, build smarter, and gain confidence in your own journey.
-        </p>
-
-        <p>
-          If you’re tempted to copy/paste it and make it yours as-is—don’t. The community will call you out, and you’ll doom yourself to eternal mediocrity.
-        </p>
       </div><!-- .s__content -->
     </div><!-- .s__block -->
-
-    <div class="s__block s__block--studies">
-      <h2 class="s__title">Studies</h2>
-
-      <div class="s__content s__content--list s__items">
-        {
-          studies.map((study) => (
-            <div class="s__item js-reveal">
-              <span class="s__item__inner">
-                <h3 class="s__item__title">{study.title}</h3>
-                <p class="s__item__meta">
-                  {study.institution} — {study.date}
-                </p>
-                <p class="s__item__description">{study.description}</p>
-              </span>
-              <span class="s__item__mask" />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <div class="s__block s__block--organizations">
-      <h2 class="s__title">Organizations</h2>
-
-      <div class="s__content s__content--list s__items">
-        {
-          organizations.map((org) => (
-            <div class="s__item js-reveal">
-              <span class="s__item__inner">
-                <h3 class="s__item__title">{org.role}</h3>
-                <p class="s__item__meta">
-                  {org.entity} — {org.date}
-                </p>
-                <p class="s__item__description">{org.description}</p>
-              </span>
-              <span class="s__item__mask" />
-            </div>
-          ))
-        }
-      </div>
-    </div>
 
     <div class="s__block s__block--awards">
       <h2 class="s__title">Awards</h2>
@@ -1202,7 +1120,7 @@ const organizations = [
           grid-row: 1 / 2;
         }
 
-        &--awwwards {
+        &--fullstack {
           grid-column: 1 / 3;
           grid-row: 2 / 4;
 
@@ -1252,8 +1170,8 @@ const organizations = [
           }
         }
 
-        &--fwa {
-          grid-column: 4 / 5;
+        &--tedxitb {
+          grid-column: 3 / 5;
           grid-row: 3 / 4;
 
           @include mq(tablet-sm) {
@@ -1282,7 +1200,7 @@ const organizations = [
           }
         }
 
-        &--cssda {
+        &--bloca {
           grid-column: 2 / 4;
           grid-row: 5 / 6;
 

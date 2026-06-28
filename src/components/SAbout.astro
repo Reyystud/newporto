@@ -92,15 +92,18 @@ const organizations = [
     <div class="s__block s__block--studies">
       <h2 class="s__title">Studies</h2>
 
-      <div class="s__content s__content--list">
+      <div class="s__content s__content--list s__items">
         {
           studies.map((study) => (
-            <div class="s__item">
-              <h3 class="s__item__title">{study.title}</h3>
-              <p class="s__item__meta">
-                {study.institution} — {study.date}
-              </p>
-              <p class="s__item__description">{study.description}</p>
+            <div class="s__item js-reveal">
+              <span class="s__item__inner">
+                <h3 class="s__item__title">{study.title}</h3>
+                <p class="s__item__meta">
+                  {study.institution} — {study.date}
+                </p>
+                <p class="s__item__description">{study.description}</p>
+              </span>
+              <span class="s__item__mask" />
             </div>
           ))
         }
@@ -110,15 +113,18 @@ const organizations = [
     <div class="s__block s__block--organizations">
       <h2 class="s__title">Organizations</h2>
 
-      <div class="s__content s__content--list">
+      <div class="s__content s__content--list s__items">
         {
           organizations.map((org) => (
-            <div class="s__item">
-              <h3 class="s__item__title">{org.role}</h3>
-              <p class="s__item__meta">
-                {org.entity} — {org.date}
-              </p>
-              <p class="s__item__description">{org.description}</p>
+            <div class="s__item js-reveal">
+              <span class="s__item__inner">
+                <h3 class="s__item__title">{org.role}</h3>
+                <p class="s__item__meta">
+                  {org.entity} — {org.date}
+                </p>
+                <p class="s__item__description">{org.description}</p>
+              </span>
+              <span class="s__item__mask" />
             </div>
           ))
         }
@@ -132,7 +138,7 @@ const organizations = [
         {
           Object.entries(awards.counters).map(([award, counters]) => (
             <li
-              class={`s__award s__award--counter s__award--${award} js-award`}
+              class={`s__award s__award--counter s__award--${award} js-award js-reveal`}
             >
               <span class="s__award__inner">
                 <span class="s__award__name">{award}</span>
@@ -148,7 +154,7 @@ const organizations = [
 
         {
           Object.entries(awards.texts).map(([award, text]) => (
-            <li class={`s__award s__award--text s__award--${award} js-award`}>
+            <li class={`s__award s__award--text s__award--${award} js-award js-reveal`}>
               <span class="s__award__inner">
                 <span class="s__award__text" set:html={text} />
               </span>
@@ -289,6 +295,7 @@ const organizations = [
       ;(this.canvas = document.querySelector('.js-canvas')),
         (this.ctx = this.canvas.getContext('2d'))
       this.awards = this.el.querySelectorAll('.js-award')
+      this.revealItems = this.el.querySelectorAll('.js-reveal')
 
       // Properties
       this.lines = []
@@ -344,9 +351,11 @@ const organizations = [
         }
       )
 
-      this.awards.forEach((award) => {
-        observer.observe(award)
+      this.revealItems.forEach((item) => {
+        observer.observe(item)
+      })
 
+      this.awards.forEach((award) => {
         const awardInteraction = this.onAwardInteraction.bind(this, award)
         award.addEventListener('mouseenter', awardInteraction, {
           passive: true,
